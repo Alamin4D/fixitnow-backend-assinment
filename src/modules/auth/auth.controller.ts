@@ -37,6 +37,8 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+
+
 const getMe = async (req: Request, res: Response, next: NextFunction) => {
   try {
     console.log("getMe called, req.user:", req.user);
