@@ -16,6 +16,8 @@ declare global {
   }
 }
 
+
+
 const auth = (...requiredRoles: string[]) => {
   return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     let token: string | undefined;
