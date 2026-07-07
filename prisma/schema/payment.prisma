@@ -1,0 +1,20 @@
+model Payment {
+  id              String        @id @default(uuid())
+  bookingId       String        @unique
+  userId          String
+  transactionId   String        @unique
+  amount          Float
+  currency        String        @default("usd")
+  method          PaymentMethod @default(STRIPE)
+  provider        String        @default("stripe")
+  status          PaymentStatus @default(PENDING)
+  stripePaymentId String?
+  paidAt          DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  booking Booking @relation(fields: [bookingId], references: [id])
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@map("payments")
+}
