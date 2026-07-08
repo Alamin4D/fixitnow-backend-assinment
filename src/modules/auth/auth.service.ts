@@ -87,6 +87,8 @@ const login = async (payload: { email: string; password: string }) => {
   return { user: userWithoutPassword, accessToken };
 };
 
+
+
 const getMe = async (userId: string) => {
   const user = await prisma.user.findUnique({
     where: { id: userId },
