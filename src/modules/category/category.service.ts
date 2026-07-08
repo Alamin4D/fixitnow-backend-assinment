@@ -33,7 +33,8 @@ const getById = async (id: string) => {
 
 const create = async (payload: { name: string; description?: string; icon?: string }) => {
   const existing = await prisma.category.findUnique({ where: { name: payload.name } });
-  if (existing) throw new Error("Category with this name already exists.");
+  if (existing) 
+    throw new Error("Category with this name already exists.");
 
   const category = await prisma.category.create({ data: payload });
   return category;
@@ -41,13 +42,15 @@ const create = async (payload: { name: string; description?: string; icon?: stri
 
 const update = async (id: string, payload: { name?: string; description?: string; icon?: string; isActive?: boolean }) => {
   const category = await prisma.category.findUnique({ where: { id } });
-  if (!category) throw new Error("Category not found.");
+  if (!category) 
+    throw new Error("Category not found.");
 
   if (payload.name) {
     const existing = await prisma.category.findFirst({
       where: { name: payload.name, id: { not: id } },
     });
-    if (existing) throw new Error("Category with this name already exists.");
+    if (existing) 
+        throw new Error("Category with this name already exists.");
   }
 
   const updated = await prisma.category.update({ where: { id }, data: payload });
@@ -56,7 +59,8 @@ const update = async (id: string, payload: { name?: string; description?: string
 
 const remove = async (id: string) => {
   const category = await prisma.category.findUnique({ where: { id } });
-  if (!category) throw new Error("Category not found.");
+  if (!category) 
+    throw new Error("Category not found.");
 
   await prisma.category.update({ where: { id }, data: { isActive: false } });
   return null;
