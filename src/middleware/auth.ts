@@ -17,7 +17,6 @@ declare global {
 }
 
 
-
 const auth = (...requiredRoles: string[]) => {
   return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     let token: string | undefined;
@@ -51,7 +50,10 @@ const auth = (...requiredRoles: string[]) => {
           success: false,
           message: "Forbidden.",
           errorDetails: [
-            { path: "role", message: `Required: ${requiredRoles.join(", ")}. Your: ${decoded.role}.` },
+            {
+              path: "role",
+              message: `Required: ${requiredRoles.join(", ")}.Your: ${decoded.role}.`
+            },
           ],
         });
         return;
@@ -89,7 +91,12 @@ const auth = (...requiredRoles: string[]) => {
       res.status(401).json({
         success: false,
         message: "Invalid token.",
-        errorDetails: [{ path: "token", message: err.message }],
+        errorDetails: [
+          {
+            path: "token",
+            message: err.message
+          }
+        ],
       });
       return;
     }
