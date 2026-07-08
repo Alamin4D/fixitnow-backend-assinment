@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import config from "../../config";
 import { prisma } from "../../lib/prisma";
 import bcrypt from "bcryptjs";
+import { IRegisterUser } from "./auth.interface";
 
 
 const generateToken = (payload: object): string => {
@@ -10,14 +11,7 @@ const generateToken = (payload: object): string => {
   } as jwt.SignOptions);
 };
 
-const register = async (payload: {
-  name: string;
-  email: string;
-  password: string;
-  role: string;
-  phone?: string;
-  address?: string;
-}) => {
+const register = async (payload: IRegisterUser) => {
   const existingUser = await prisma.user.findUnique({
     where: { email: payload.email },
   });
@@ -128,4 +122,8 @@ const getMe = async (userId: string) => {
   return user;
 };
 
-export const AuthService = { register, login, getMe };
+export const AuthService = { 
+  register, 
+  login, 
+  getMe 
+};

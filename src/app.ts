@@ -5,12 +5,19 @@ import config from "./config";
 import { notFound } from "./middleware/notFound";
 import { globalErrorHandler } from "./middleware/globalErrorHandlar";
 import { AuthRoutes } from "./modules/auth/auth.route";
+import { CategoryRoutes } from "./modules/category/category.route";
+import { ServiceRoutes } from "./modules/service/service.routes";
+import { TechnicianRoutes } from "./modules/technician/technician.routes";
+import { BookingRoutes } from "./modules/booking/booking.routes";
+import { ReviewRoutes } from "./modules/review/review.routes";
+import { TechnicianManageRoutes } from "./modules/technician/technician.manage.routes";
+import { AdminRoutes } from "./modules/admin/admin.route";
 
 
 // Route imports
-
-
 const app: Application = express();
+
+
 
 // Middlewares
 app.use(cors({
@@ -34,33 +41,24 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 
-// Health
-app.get("/health", (req: Request, res: Response) => {
-  res.status(200).json({
-    success: true,
-    message: "Server is healthy",
-    timestamp: new Date().toISOString(),
-  });
-});
-
 // Auth
 app.use("/api/auth", AuthRoutes);
 
 // Public
-// app.use("/api/categories", CategoryRoutes);
-// app.use("/api/services", ServiceRoutes);
-// app.use("/api/technicians", TechnicianRoutes);
+app.use("/api/categories", CategoryRoutes);
+app.use("/api/services", ServiceRoutes);
+app.use("/api/technicians", TechnicianRoutes);
 
 // Customer
-// app.use("/api/bookings", BookingRoutes);
+app.use("/api/bookings", BookingRoutes);
 // app.use("/api/payments", PaymentRoutes);
-// app.use("/api/reviews", ReviewRoutes);
+app.use("/api/reviews", ReviewRoutes);
 
 // Technician Management
-// app.use("/api/technician", TechnicianManageRoutes);
+app.use("/api/technician", TechnicianManageRoutes);
 
 // Admin
-// app.use("/api/admin", AdminRoutes);
+app.use("/api/admin", AdminRoutes);
 
 // Error Handlers
 app.use(notFound);
