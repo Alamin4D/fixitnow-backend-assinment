@@ -7,7 +7,7 @@ A comprehensive backend API for a home services marketplace where customers can 
 ## 🔗 Live Links
 
 - **Backend Repo:** [GitHub Repository](https://github.com/your-username/fixitnow-backend)
-- **Live API:** [Live Server URL](https://your-live-url.vercel.app)
+- **Live API:** [Live Server URL](https://fixitnow-backend-assinment.vercel.app/)
 - **API Docs:** [Postman Documentation](https://documenter.getpostman.com/view/xxx)
 - **Demo Video:** [Video Link](https://drive.google.com/file/d/xxx/view)
 
