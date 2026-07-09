@@ -15,6 +15,7 @@ const createProfile = async (req: Request, res: Response, next: NextFunction) =>
     } catch (error) { next(error); }
 };
 
+
 const updateProfile = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const result = await TechnicianManageService.updateProfile(req.user!.id, req.body);
