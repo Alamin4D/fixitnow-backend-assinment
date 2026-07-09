@@ -94,4 +94,9 @@ const cancel = async (bookingId: string, userId: string, cancellationReason?: st
   return updated;
 };
 
-export const BookingService = { create, getMyBookings, getById, cancel };
+export const BookingService = { 
+  create, 
+  getMyBookings, 
+  getById, 
+  cancel 
+};
