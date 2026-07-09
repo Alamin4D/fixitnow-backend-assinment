@@ -1,13 +1,15 @@
 import { Request, Response, NextFunction } from "express";
 import { AuthService } from "./auth.service";
+import { sendResponse } from "../../utils/sendResponse";
+import httpStatus from "http-status";
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await AuthService.register(req.body);
 
-    res.status(201).json({
+    sendResponse(res, {
       success: true,
-      statusCode: 201,
+      statusCode: httpStatus.CREATED,
       message: "User registered successfully.",
       data: {
         user: result.user,
@@ -23,9 +25,9 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await AuthService.login(req.body);
 
-    res.status(200).json({
+    sendResponse(res, {
       success: true,
-      statusCode: 200,
+      statusCode: httpStatus.OK,
       message: "User logged in successfully.",
       data: {
         user: result.user,
@@ -42,9 +44,9 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
 const getMe = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await AuthService.getMe(req.user!.id);
-    res.status(200).json({
+    sendResponse(res, {
       success: true,
-      statusCode: 200,
+      statusCode: httpStatus.OK,
       message: "User profile retrieved successfully.",
       data: result,
     });
@@ -53,4 +55,8 @@ const getMe = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export const AuthController = { register, login, getMe };
+export const AuthController = {
+  register,
+  login,
+  getMe
+};

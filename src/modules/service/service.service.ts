@@ -144,8 +144,10 @@ const update = async (serviceId: string, technicianUserId: string, payload: any)
 };
 
 const remove = async (serviceId: string, technicianUserId: string) => {
-    const service = await prisma.service.findUnique({ where: { id: serviceId } });
-    if (!service) 
+    const service = await prisma.service.findUnique({
+        where: { id: serviceId }
+    });
+    if (!service)
         throw new Error("Service not found.");
 
     const techProfile = await prisma.technicianProfile.findUnique({

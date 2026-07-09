@@ -1,12 +1,14 @@
 import { Request, Response, NextFunction } from "express";
 import { ServiceService } from "./service.service";
+import { sendResponse } from "../../utils/sendResponse";
+import httpStatus from "http-status";
 
 const getAll = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await ServiceService.getAll(req.query as any);
-    res.status(200).json({
+    sendResponse(res, {
       success: true,
-      statusCode: 200,
+      statusCode: httpStatus.OK,
       message: "Services retrieved successfully.",
       meta: result.meta,
       data: result.data,
@@ -17,9 +19,9 @@ const getAll = async (req: Request, res: Response, next: NextFunction) => {
 const getById = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await ServiceService.getById(req.params.id as string);
-    res.status(200).json({
+    sendResponse(res, {
       success: true,
-      statusCode: 200,
+      statusCode: httpStatus.OK,
       message: "Service retrieved successfully.",
       data: result,
     });
@@ -29,9 +31,9 @@ const getById = async (req: Request, res: Response, next: NextFunction) => {
 const create = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await ServiceService.create(req.user!.id, req.body);
-    res.status(201).json({
+    sendResponse(res, {
       success: true,
-      statusCode: 201,
+      statusCode: httpStatus.CREATED,
       message: "Service created successfully.",
       data: result,
     });
@@ -41,9 +43,9 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 const update = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await ServiceService.update(req.params.id as string, req.user!.id, req.body);
-    res.status(200).json({
+    sendResponse(res, {
       success: true,
-      statusCode: 200,
+      statusCode: httpStatus.OK,
       message: "Service updated successfully.",
       data: result,
     });
@@ -53,19 +55,19 @@ const update = async (req: Request, res: Response, next: NextFunction) => {
 const remove = async (req: Request, res: Response, next: NextFunction) => {
   try {
     await ServiceService.remove(req.params.id as string, req.user!.id);
-    res.status(200).json({
+    sendResponse(res, {
       success: true,
-      statusCode: 200,
+      statusCode: httpStatus.OK,
       message: "Service deleted successfully.",
       data: null,
     });
   } catch (error) { next(error); }
 };
 
-export const ServiceController = { 
-    getAll, 
-    getById, 
-    create, 
-    update, 
-    remove 
+export const ServiceController = {
+  getAll,
+  getById,
+  create,
+  update,
+  remove
 };
