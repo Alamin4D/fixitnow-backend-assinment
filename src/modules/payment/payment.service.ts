@@ -89,7 +89,7 @@ const verifyPayment = async (userId: string, sessionId: string) => {
 
   if (!session) throw new Error("Invalid session.");
 
-  // Payment record খুঁজো
+
   const payment = await prisma.payment.findFirst({
     where: { stripePaymentId: sessionId },
     include: { booking: true },

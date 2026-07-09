@@ -22,21 +22,57 @@ const getAll = async (filters: {
   if (filters.minRating) where.rating = { gte: parseFloat(filters.minRating) };
   if (filters.search) {
     where.OR = [
-      { bio: { contains: filters.search, mode: "insensitive" } },
-      { user: { name: { contains: filters.search, mode: "insensitive" } } },
+      {
+        bio: {
+          contains: filters.search,
+          mode: "insensitive"
+        }
+      },
+      {
+        user: {
+          name: {
+            contains: filters.search,
+            mode: "insensitive"
+          }
+        }
+      },
     ];
   }
   if (filters.categoryId) {
-    where.services = { some: { categoryId: filters.categoryId, isActive: true } };
+    where.services = {
+      some: {
+        categoryId: filters.categoryId,
+        isActive: true
+      }
+    };
   }
 
   const [technicians, total] = await Promise.all([
     prisma.technicianProfile.findMany({
       where,
       include: {
-        user: { select: { id: true, name: true, email: true, phone: true } },
-        services: { where: { isActive: true }, include: { category: true } },
-        _count: { select: { reviews: true, bookings: true } },
+        user: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            phone: true
+          }
+        },
+        services: {
+          where: {
+            isActive: true
+          },
+          include: {
+            category: true
+          }
+        },
+        _count: {
+          select: {
+            reviews: true,
+            bookings: true
+          }
+        },
       },
       skip,
       take: limit,
@@ -53,17 +89,55 @@ const getAll = async (filters: {
 
 const getById = async (id: string) => {
   const technician = await prisma.technicianProfile.findFirst({
-    where: { OR: [{ id }, { userId: id }] },
+    where: {
+      OR: [
+        {
+          id
+        },
+        {
+          userId: id
+        }
+      ]
+    },
     include: {
-      user: { select: { id: true, name: true, email: true, phone: true } },
-      services: { where: { isActive: true }, include: { category: true } },
-      availability: { orderBy: { dayOfWeek: "asc" } },
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          phone: true
+        }
+      },
+      services: {
+        where: {
+          isActive: true
+        },
+        include: {
+          category: true
+        }
+      },
+      availability: {
+        orderBy: {
+          dayOfWeek: "asc"
+        }
+      },
       reviews: {
-        include: { customer: { select: { name: true } } },
+        include: {
+          customer: {
+            select: {
+              name: true
+            }
+          }
+        },
         orderBy: { createdAt: "desc" },
         take: 20,
       },
-      _count: { select: { reviews: true, bookings: true } },
+      _count: {
+        select: {
+          reviews: true,
+          bookings: true
+        }
+      },
     },
   });
   if (!technician) throw new Error("Technician not found.");
@@ -71,7 +145,7 @@ const getById = async (id: string) => {
 };
 
 
-export const TechnicianService = { 
-    getAll, 
-    getById 
+export const TechnicianService = {
+  getAll,
+  getById
 };

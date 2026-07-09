@@ -110,7 +110,15 @@ const getAllBookings = async (filters: { status?: string; page?: string; limit?:
             }),
         prisma.booking.count({ where }),
     ]);
-    return { data: bookings, meta: { page, limit, total, totalPages: Math.ceil(total / limit) } };
+    return {
+        data: bookings,
+        meta: {
+            page,
+            limit,
+            total,
+            totalPages: Math.ceil(total / limit)
+        }
+    };
 };
 
 export const AdminService = {

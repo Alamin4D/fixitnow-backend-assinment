@@ -9,8 +9,28 @@ const create = async (customerId: string, payload: { bookingId: string; rating: 
 
     const review = await prisma.$transaction(async (tx) => {
         const newReview = await tx.review.create({
-            data: { bookingId: payload.bookingId, customerId, technicianId: booking.technicianId, rating: payload.rating, comment: payload.comment },
-            include: { customer: { select: { name: true } }, booking: { include: { service: { include: { category: true } } } } },
+            data: {
+                 bookingId: payload.bookingId, 
+                 customerId, technicianId: booking.technicianId, 
+                 rating: payload.rating, 
+                 comment: payload.comment 
+                },
+            include: { 
+                customer: { 
+                    select: { 
+                        name: true 
+                    } 
+                }, 
+                booking: {
+                     include: {
+                         service: {
+                             include: {
+                                 category: true 
+                                } 
+                            } 
+                        } 
+                    } 
+                },
         });
 
         const stats = await tx.review.aggregate({ where: { technicianId: booking.technicianId }, _avg: { rating: true }, _count: { rating: true } });
@@ -32,10 +52,44 @@ const getByTechnicianId = async (technicianId: string, filters: { page?: string;
     if (!profile) throw new Error("Technician not found.");
 
     const [reviews, total] = await Promise.all([
-        prisma.review.findMany({ where: { technicianId: profile.id }, include: { customer: { select: { name: true } }, booking: { include: { service: { select: { title: true } } } } }, skip, take: limit, orderBy: { createdAt: "desc" } }),
+        prisma.review.findMany({ 
+            where: { 
+                technicianId: profile.id 
+            }, 
+            include: { 
+                customer: { 
+                    select: {
+                         name: true
+                         } 
+                        }, 
+                        booking: {
+                             include: {
+                                 service: {
+                                     select: {
+                                         title: true 
+                                        } 
+                                    } 
+                                } 
+                            } 
+                        },
+                         skip, 
+                         take: limit, 
+                         orderBy: { 
+                            createdAt: "desc"
+                         } 
+                        }
+                    ),
         prisma.review.count({ where: { technicianId: profile.id } }),
     ]);
-    return { data: reviews, meta: { page, limit, total, totalPages: Math.ceil(total / limit) } };
+    return { data: 
+        reviews, 
+        meta: { 
+            page, 
+            limit, 
+            total, 
+            totalPages: Math.ceil(total / limit) 
+        } 
+    };
 };
 
 export const ReviewService = {
