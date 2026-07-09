@@ -1,0 +1,1296 @@
+{
+  "info": {
+    "_postman_id": "37a88835-3e7f-4d03-8ab2-d171b8e35a86",
+    "name": "FixItNow API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34626746"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register Customer",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Shakib\",\r\n  \"email\": \"shakib@.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"CUSTOMER\",\r\n  \"phone\": \"01812345678\",\r\n  \"address\": \"Chittagong, Bangladesh\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/auth/register",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register Technician",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Rahim Technician3\",\r\n  \"email\": \"rarimm@example.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"TECHNICIAN\",\r\n  \"phone\": \"01812345678\",\r\n  \"address\": \"Chittagong, Bangladesh\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/auth/register",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Admin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"admin@fixitnow.com\",\r\n  \"password\": \"admin123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/auth/login",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Customer",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"karim3@example.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/auth/login",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Technician",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"rarimm@example.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/auth/login",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk2MTVjZDA0LWRjYzUtNGFkYy05MDYwLWMyMjcyMjA0ODQ4MSIsIm5hbWUiOiJLYXJpbSBUZWNobmljaWFuMyIsImVtYWlsIjoia2FyaW1tQGV4YW1wbGUuY29tIiwicm9sZSI6IlRFQ0hOSUNJQU4iLCJpYXQiOjE3ODM1MDAzMTgsImV4cCI6MTc4MzU4NjcxOH0.VRJuCv4cBQbsBrB3McgzdaQlwSTUHNFh2ZuQejR9mIs",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:5000/api/auth/me",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Public",
+      "item": [
+        {
+          "name": "All Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5000/api/categories",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Category By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5000/api/categories/ad1898a6-ea97-4c10-b3c2-88d6fba2e67f",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "categories",
+                "ad1898a6-ea97-4c10-b3c2-88d6fba2e67f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All Services",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM5ZGExZDMwLTYwMjctNDYwZC05ZTAxLTQwNDMyMzRlOGNkNCIsImVtYWlsIjoia2FyaW1AZXhhbXBsZS5jb20iLCJyb2xlIjoiVEVDSE5JQ0lBTiIsImlhdCI6MTc4MzM1MjU5NiwiZXhwIjoxNzgzOTU3Mzk2fQ.1gas8j4n7WIoRps2OQcuUi_tfVun9mjme1vc4-r-OfA",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/services",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "services"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Service By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5000/api/services/d4e27c1b-2737-42f2-9176-24b55ceabf30",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "services",
+                "d4e27c1b-2737-42f2-9176-24b55ceabf30"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All Technicians",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5000/api/technicians",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "technicians"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Technician By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5000/api/technicians/da5eb7ce-dd83-4492-9f76-fdbfdd103666",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "technicians",
+                "da5eb7ce-dd83-4492-9f76-fdbfdd103666"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Technician Reviews",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5000/api/reviews/technician/da5eb7ce-dd83-4492-9f76-fdbfdd103666",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "reviews",
+                "technician",
+                "da5eb7ce-dd83-4492-9f76-fdbfdd103666"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All Services Filtered",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5000/api/services?minPrice=50&maxPrice=50",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "services"
+              ],
+              "query": [
+                {
+                  "key": "minPrice",
+                  "value": "50"
+                },
+                {
+                  "key": "maxPrice",
+                  "value": "50"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All Technicians Filtered",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:5000/api/technicians?location=Chittagong",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "technicians"
+              ],
+              "query": [
+                {
+                  "key": "location",
+                  "value": "Chittagong"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Customer",
+      "item": [
+        {
+          "name": "Create Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlOTkyNmU0LTUxMTAtNGU2OC1iNDk5LWI0YjBkZTFiOTAzOSIsIm5hbWUiOiJLYXJpbSBDdXN0b21lcjMiLCJlbWFpbCI6ImthcmltM0BleGFtcGxlLmNvbSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc4MzUyMjMyNywiZXhwIjoxNzgzNjA4NzI3fQ.GQl9oPrXyzrN1YeUaWAmMmIOwmJl9SCdsf5di9cZrjE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"serviceId\": \"2b3ccf06-1807-4746-ba5b-568e0891a513\",\r\n  \"scheduledDate\": \"2027-08-15\",\r\n  \"scheduledTime\": \"16:00\",\r\n  \"address\": \"123 Main Street, Dhaka\",\r\n  \"notes\": \"Please bring extra tools\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/bookings",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Bookings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlOTkyNmU0LTUxMTAtNGU2OC1iNDk5LWI0YjBkZTFiOTAzOSIsIm5hbWUiOiJLYXJpbSBDdXN0b21lcjMiLCJlbWFpbCI6ImthcmltM0BleGFtcGxlLmNvbSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc4MzUyMjMyNywiZXhwIjoxNzgzNjA4NzI3fQ.GQl9oPrXyzrN1YeUaWAmMmIOwmJl9SCdsf5di9cZrjE",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:5000/api/bookings",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Booking By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlOTkyNmU0LTUxMTAtNGU2OC1iNDk5LWI0YjBkZTFiOTAzOSIsIm5hbWUiOiJLYXJpbSBDdXN0b21lcjMiLCJlbWFpbCI6ImthcmltM0BleGFtcGxlLmNvbSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc4MzUyMjMyNywiZXhwIjoxNzgzNjA4NzI3fQ.GQl9oPrXyzrN1YeUaWAmMmIOwmJl9SCdsf5di9cZrjE",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:5000/api/bookings/5e4f53fd-a794-4528-b7a5-b9fe7ab98744",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings",
+                "5e4f53fd-a794-4528-b7a5-b9fe7ab98744"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Booking",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlOTkyNmU0LTUxMTAtNGU2OC1iNDk5LWI0YjBkZTFiOTAzOSIsIm5hbWUiOiJLYXJpbSBDdXN0b21lcjMiLCJlbWFpbCI6ImthcmltM0BleGFtcGxlLmNvbSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc4MzUyMjMyNywiZXhwIjoxNzgzNjA4NzI3fQ.GQl9oPrXyzrN1YeUaWAmMmIOwmJl9SCdsf5di9cZrjE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"cancellationReason\": \"Changed my mind\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/bookings/5e4f53fd-a794-4528-b7a5-b9fe7ab98744/cancel",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings",
+                "5e4f53fd-a794-4528-b7a5-b9fe7ab98744",
+                "cancel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlOTkyNmU0LTUxMTAtNGU2OC1iNDk5LWI0YjBkZTFiOTAzOSIsIm5hbWUiOiJLYXJpbSBDdXN0b21lcjMiLCJlbWFpbCI6ImthcmltM0BleGFtcGxlLmNvbSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc4MzUyNTA3OSwiZXhwIjoxNzgzNjExNDc5fQ.U7yPH1RE2RDtG7ddxaF7VdiljrNVxL0cni5jQnfI_dY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"bookingId\": \"5e4f53fd-a794-4528-b7a5-b9fe7ab98744\",\r\n  \"rating\": 5,\r\n  \"comment\": \"Excellent service! Very professional.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/reviews",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "reviews"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Bookings Filtered",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlOTkyNmU0LTUxMTAtNGU2OC1iNDk5LWI0YjBkZTFiOTAzOSIsIm5hbWUiOiJLYXJpbSBDdXN0b21lcjMiLCJlbWFpbCI6ImthcmltM0BleGFtcGxlLmNvbSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc4MzUyMjMyNywiZXhwIjoxNzgzNjA4NzI3fQ.GQl9oPrXyzrN1YeUaWAmMmIOwmJl9SCdsf5di9cZrjE",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:5000/api/bookings?status=ACCEPTED",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "ACCEPTED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Payment History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlOTkyNmU0LTUxMTAtNGU2OC1iNDk5LWI0YjBkZTFiOTAzOSIsIm5hbWUiOiJLYXJpbSBDdXN0b21lcjMiLCJlbWFpbCI6ImthcmltM0BleGFtcGxlLmNvbSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc4MzU4NjA0MCwiZXhwIjoxNzgzNjcyNDQwfQ.f515k-K4C8k8_HsXVAYRhqQduG_xiosKXYMUDTPnh-g",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:5000/api/payments",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "payments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Payment By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlOTkyNmU0LTUxMTAtNGU2OC1iNDk5LWI0YjBkZTFiOTAzOSIsIm5hbWUiOiJLYXJpbSBDdXN0b21lcjMiLCJlbWFpbCI6ImthcmltM0BleGFtcGxlLmNvbSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc4MzU4NjA0MCwiZXhwIjoxNzgzNjcyNDQwfQ.f515k-K4C8k8_HsXVAYRhqQduG_xiosKXYMUDTPnh-g",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:5000/api/payments/1be3828b-1323-4dbc-ab89-b687e94e1665",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "payments",
+                "1be3828b-1323-4dbc-ab89-b687e94e1665"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlOTkyNmU0LTUxMTAtNGU2OC1iNDk5LWI0YjBkZTFiOTAzOSIsIm5hbWUiOiJLYXJpbSBDdXN0b21lcjMiLCJlbWFpbCI6ImthcmltM0BleGFtcGxlLmNvbSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc4MzU3MjQ3OCwiZXhwIjoxNzgzNjU4ODc4fQ.D6pcyQX3jrDxOV6-1lFiWe_s3NnfcDthsuWiudxnu_M",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"sessionId\": \"cs_test_a1nGO78NIXH1irU7JCHuu7Kvztlz4dbYEv0qzwXtpwzOH269rtbUtt3JJS\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/payments/verify",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "payments",
+                "verify"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Checkout Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlOTkyNmU0LTUxMTAtNGU2OC1iNDk5LWI0YjBkZTFiOTAzOSIsIm5hbWUiOiJLYXJpbSBDdXN0b21lcjMiLCJlbWFpbCI6ImthcmltM0BleGFtcGxlLmNvbSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc4MzU4NjA0MCwiZXhwIjoxNzgzNjcyNDQwfQ.f515k-K4C8k8_HsXVAYRhqQduG_xiosKXYMUDTPnh-g",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"bookingId\": \"03cbf5d9-e16e-402e-87c0-d0c0554a26d8\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/payments/checkout",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "payments",
+                "checkout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Direct Payment (Postman Only - No Redirect)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlOTkyNmU0LTUxMTAtNGU2OC1iNDk5LWI0YjBkZTFiOTAzOSIsIm5hbWUiOiJLYXJpbSBDdXN0b21lcjMiLCJlbWFpbCI6ImthcmltM0BleGFtcGxlLmNvbSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc4MzU4NjA0MCwiZXhwIjoxNzgzNjcyNDQwfQ.f515k-K4C8k8_HsXVAYRhqQduG_xiosKXYMUDTPnh-g",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"bookingId\": \"61bcac1f-ceb6-4a22-8936-3dfd26ba2b12\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/payments/create",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "payments",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Technician",
+      "item": [
+        {
+          "name": "Create Profile",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyNzFhODhiLTkzMzgtNDU1Mi1hM2RjLWJhNTEzNDFjMmMzYSIsIm5hbWUiOiJSYWhpbSBUZWNobmljaWFuMyIsImVtYWlsIjoicmFyaW1tQGV4YW1wbGUuY29tIiwicm9sZSI6IlRFQ0hOSUNJQU4iLCJpYXQiOjE3ODM1ODQ1NTksImV4cCI6MTc4MzY3MDk1OX0.DEmBY9BscdMDniK8D8B5dkpKT2ABUSQ_kVpMvFn0dpg",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"bio\": \"Professional electrician with 8 years of experience in residential and commercial electrical services.\",\r\n  \"experience\": 8,\r\n  \"location\": \"Chattogram, Bangladesh\",\r\n  \"profilePicture\": \"https://example.com/images/electrician-profile.jpg\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/technician/profile",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "technician",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk2MTVjZDA0LWRjYzUtNGFkYy05MDYwLWMyMjcyMjA0ODQ4MSIsIm5hbWUiOiJLYXJpbSBUZWNobmljaWFuMyIsImVtYWlsIjoia2FyaW1tQGV4YW1wbGUuY29tIiwicm9sZSI6IlRFQ0hOSUNJQU4iLCJpYXQiOjE3ODM1MTA5MTEsImV4cCI6MTc4MzU5NzMxMX0.yxHuUnQUBtQhAHk2QtpmBXDlezfSDSzPBwjxQlBbbdM",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"bio\": \"Updated - Expert plumber with 7 years experience\",\r\n  \"experience\": 7,\r\n  \"location\": \"Chittagong, Bangladesh\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/technician/profile",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "technician",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Availability",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk2MTVjZDA0LWRjYzUtNGFkYy05MDYwLWMyMjcyMjA0ODQ4MSIsIm5hbWUiOiJLYXJpbSBUZWNobmljaWFuMyIsImVtYWlsIjoia2FyaW1tQGV4YW1wbGUuY29tIiwicm9sZSI6IlRFQ0hOSUNJQU4iLCJpYXQiOjE3ODM1MjE5MjQsImV4cCI6MTc4MzYwODMyNH0.JD9EK2xUz11m7K0E7fi-6zRHZC9Z0IAbXXwd7mlgaOc",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"slots\": [\r\n    { \"dayOfWeek\": 0, \"startTime\": \"09:00\", \"endTime\": \"17:00\", \"isAvailable\": true },\r\n    { \"dayOfWeek\": 1, \"startTime\": \"09:00\", \"endTime\": \"17:00\", \"isAvailable\": true },\r\n    { \"dayOfWeek\": 2, \"startTime\": \"09:00\", \"endTime\": \"17:00\", \"isAvailable\": true },\r\n    { \"dayOfWeek\": 3, \"startTime\": \"09:00\", \"endTime\": \"17:00\", \"isAvailable\": true },\r\n    { \"dayOfWeek\": 4, \"startTime\": \"09:00\", \"endTime\": \"17:00\", \"isAvailable\": true },\r\n    { \"dayOfWeek\": 5, \"startTime\": \"10:00\", \"endTime\": \"14:00\", \"isAvailable\": true },\r\n    { \"dayOfWeek\": 6, \"startTime\": \"00:00\", \"endTime\": \"00:00\", \"isAvailable\": false }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/technician/availability",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "technician",
+                "availability"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Bookings",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk2MTVjZDA0LWRjYzUtNGFkYy05MDYwLWMyMjcyMjA0ODQ4MSIsIm5hbWUiOiJLYXJpbSBUZWNobmljaWFuMyIsImVtYWlsIjoia2FyaW1tQGV4YW1wbGUuY29tIiwicm9sZSI6IlRFQ0hOSUNJQU4iLCJpYXQiOjE3ODM1MjE5MjQsImV4cCI6MTc4MzYwODMyNH0.JD9EK2xUz11m7K0E7fi-6zRHZC9Z0IAbXXwd7mlgaOc",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/technician/bookings",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "technician",
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Service",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyNzFhODhiLTkzMzgtNDU1Mi1hM2RjLWJhNTEzNDFjMmMzYSIsIm5hbWUiOiJSYWhpbSBUZWNobmljaWFuMyIsImVtYWlsIjoicmFyaW1tQGV4YW1wbGUuY29tIiwicm9sZSI6IlRFQ0hOSUNJQU4iLCJpYXQiOjE3ODM1ODUzNjEsImV4cCI6MTc4MzY3MTc2MX0.w8jkih_ZaHjpujt12nF6qQPgvfMBPNz26kRMuazhNu8",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Air Conditioner Repair\",\r\n  \"description\": \"Professional AC repair, gas refill, cleaning, and maintenance services for homes and offices.\",\r\n  \"price\": 150,\r\n  \"duration\": 90,\r\n  \"categoryId\": \"ea8a15fd-2c83-421c-b9b9-cdd0ee1897d7\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/services",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "services"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Service",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk2MTVjZDA0LWRjYzUtNGFkYy05MDYwLWMyMjcyMjA0ODQ4MSIsIm5hbWUiOiJLYXJpbSBUZWNobmljaWFuMyIsImVtYWlsIjoia2FyaW1tQGV4YW1wbGUuY29tIiwicm9sZSI6IlRFQ0hOSUNJQU4iLCJpYXQiOjE3ODM1MjE5MjQsImV4cCI6MTc4MzYwODMyNH0.JD9EK2xUz11m7K0E7fi-6zRHZC9Z0IAbXXwd7mlgaOc",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Updated Pipe Leak Repair\",\r\n  \"price\": 50\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/services/87810bcc-a29a-49bd-82f0-4bf64bf7852b",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "services",
+                "87810bcc-a29a-49bd-82f0-4bf64bf7852b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Service",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyNzFhODhiLTkzMzgtNDU1Mi1hM2RjLWJhNTEzNDFjMmMzYSIsIm5hbWUiOiJSYWhpbSBUZWNobmljaWFuMyIsImVtYWlsIjoicmFyaW1tQGV4YW1wbGUuY29tIiwicm9sZSI6IlRFQ0hOSUNJQU4iLCJpYXQiOjE3ODM1ODQ1NTksImV4cCI6MTc4MzY3MDk1OX0.DEmBY9BscdMDniK8D8B5dkpKT2ABUSQ_kVpMvFn0dpg",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:5000/api/services/ce2ff33f-5067-4350-bfdc-9a9cfd511fb2",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "services",
+                "ce2ff33f-5067-4350-bfdc-9a9cfd511fb2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "All Users",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkNzE3NjM5LTExMzUtNGFiNS04ODdlLWE5Nzc5M2EwZmQ0OSIsIm5hbWUiOiJBbGFtaW4gQWhtZWQiLCJlbWFpbCI6ImFkbWluQGZpeGl0bm93LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MzUwNDc5MSwiZXhwIjoxNzgzNTkxMTkxfQ.vY2tIfzqoo5YMc2HzFDaDWbw_IeGlCuSFrlcxo-aXJo",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "localhost:5000/api/admin/users",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "2",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Ban User",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkNzE3NjM5LTExMzUtNGFiNS04ODdlLWE5Nzc5M2EwZmQ0OSIsIm5hbWUiOiJBbGFtaW4gQWhtZWQiLCJlbWFpbCI6ImFkbWluQGZpeGl0bm93LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MzUwNDc5MSwiZXhwIjoxNzgzNTkxMTkxfQ.vY2tIfzqoo5YMc2HzFDaDWbw_IeGlCuSFrlcxo-aXJo",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"BANNED\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/admin/users/9615cd04-dcc5-4adc-9060-c22722048481",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "users",
+                "9615cd04-dcc5-4adc-9060-c22722048481"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Unban User",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkNzE3NjM5LTExMzUtNGFiNS04ODdlLWE5Nzc5M2EwZmQ0OSIsIm5hbWUiOiJBbGFtaW4gQWhtZWQiLCJlbWFpbCI6ImFkbWluQGZpeGl0bm93LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MzUwNDc5MSwiZXhwIjoxNzgzNTkxMTkxfQ.vY2tIfzqoo5YMc2HzFDaDWbw_IeGlCuSFrlcxo-aXJo",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"ACTIVE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/admin/users/de9926e4-5110-4e68-b499-b4b0de1b9039",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "users",
+                "de9926e4-5110-4e68-b499-b4b0de1b9039"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All Bookings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkNzE3NjM5LTExMzUtNGFiNS04ODdlLWE5Nzc5M2EwZmQ0OSIsIm5hbWUiOiJBbGFtaW4gQWhtZWQiLCJlbWFpbCI6ImFkbWluQGZpeGl0bm93LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MzUyNDE2NiwiZXhwIjoxNzgzNjEwNTY2fQ.eNU8NIhUpa07jJVpyIcaWB05f7o06-VDnokv0xLJZuY",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:5000/api/admin/bookings",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkNzE3NjM5LTExMzUtNGFiNS04ODdlLWE5Nzc5M2EwZmQ0OSIsIm5hbWUiOiJBbGFtaW4gQWhtZWQiLCJlbWFpbCI6ImFkbWluQGZpeGl0bm93LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MzUwNDc5MSwiZXhwIjoxNzgzNTkxMTkxfQ.vY2tIfzqoo5YMc2HzFDaDWbw_IeGlCuSFrlcxo-aXJo",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:5000/api/admin/categories",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkNzE3NjM5LTExMzUtNGFiNS04ODdlLWE5Nzc5M2EwZmQ0OSIsIm5hbWUiOiJBbGFtaW4gQWhtZWQiLCJlbWFpbCI6ImFkbWluQGZpeGl0bm93LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MzUwNDc5MSwiZXhwIjoxNzgzNTkxMTkxfQ.vY2tIfzqoo5YMc2HzFDaDWbw_IeGlCuSFrlcxo-aXJo",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Painting\",\r\n    \"description\": \"Interior and exterior painting\",\r\n    \"icon\": \"🎨\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/admin/categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkNzE3NjM5LTExMzUtNGFiNS04ODdlLWE5Nzc5M2EwZmQ0OSIsIm5hbWUiOiJBbGFtaW4gQWhtZWQiLCJlbWFpbCI6ImFkbWluQGZpeGl0bm93LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MzUwNDc5MSwiZXhwIjoxNzgzNTkxMTkxfQ.vY2tIfzqoo5YMc2HzFDaDWbw_IeGlCuSFrlcxo-aXJo",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:5000/api/admin/categories/e11cc601-f9ea-4c96-a31e-809fb346cd82",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "categories",
+                "e11cc601-f9ea-4c96-a31e-809fb346cd82"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkNzE3NjM5LTExMzUtNGFiNS04ODdlLWE5Nzc5M2EwZmQ0OSIsIm5hbWUiOiJBbGFtaW4gQWhtZWQiLCJlbWFpbCI6ImFkbWluQGZpeGl0bm93LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MzUyNDE2NiwiZXhwIjoxNzgzNjEwNTY2fQ.eNU8NIhUpa07jJVpyIcaWB05f7o06-VDnokv0xLJZuY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Updated Plumbing\",\r\n  \"description\": \"Updated description\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:5000/api/admin/categories/ad1898a6-ea97-4c10-b3c2-88d6fba2e67f",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "categories",
+                "ad1898a6-ea97-4c10-b3c2-88d6fba2e67f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All Users Filtered",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkNzE3NjM5LTExMzUtNGFiNS04ODdlLWE5Nzc5M2EwZmQ0OSIsIm5hbWUiOiJBbGFtaW4gQWhtZWQiLCJlbWFpbCI6ImFkbWluQGZpeGl0bm93LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MzUyNDE2NiwiZXhwIjoxNzgzNjEwNTY2fQ.eNU8NIhUpa07jJVpyIcaWB05f7o06-VDnokv0xLJZuY",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:5000/api/admin/users?role=CUSTOMER",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "admin",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "role",
+                  "value": "CUSTOMER"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

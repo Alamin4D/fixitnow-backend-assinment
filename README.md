@@ -6,10 +6,10 @@ A comprehensive backend API for a home services marketplace where customers can 
 
 ## 🔗 Live Links
 
-- **Backend Repo:** [GitHub Repository](https://github.com/your-username/fixitnow-backend)
+- **Backend Repo:** [GitHub Repository](https://github.com/Alamin4D/fixitnow-backend-assinment)
 - **Live API:** [Live Server URL](https://fixitnow-backend-assinment.vercel.app/)
-- **API Docs:** [Postman Documentation](https://documenter.getpostman.com/view/xxx)
-- **Demo Video:** [Video Link](https://drive.google.com/file/d/xxx/view)
+- **API Docs:** [Postman Documentation](file:///D:/next-level-web-development/fixitnow-backend-assinment/FixItNow%20API.postman_collection.json)
+- **Demo Video:** [Video Link](https://drive.google.com/file/d/16oORT53-SonwT4ZvWL__aL9Cc3wfygiQ/view?usp=sharing)
 
 ## 👤 Admin Credentials
 Email: admin@fixitnow.com
