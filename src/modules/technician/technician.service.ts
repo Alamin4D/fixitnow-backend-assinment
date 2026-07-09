@@ -70,6 +70,7 @@ const getById = async (id: string) => {
   return technician;
 };
 
+
 export const TechnicianService = { 
     getAll, 
     getById 
