@@ -12,13 +12,13 @@ const createCheckoutSession = async (userId: string, bookingId: string) => {
     include: { service: true, payment: true },
   });
 
-  if (!booking) 
+  if (!booking)
     throw new Error("Booking not found.");
-  if (booking.customerId !== userId) 
+  if (booking.customerId !== userId)
     throw new Error("You can only pay for your own bookings.");
-  if (booking.status !== "ACCEPTED") 
+  if (booking.status !== "ACCEPTED")
     throw new Error(`Booking must be ACCEPTED. Current: ${booking.status}.`);
-  if (booking.payment && booking.payment.status === "COMPLETED") 
+  if (booking.payment && booking.payment.status === "COMPLETED")
     throw new Error("Already paid.");
 
   // Stripe Checkout Session
@@ -42,8 +42,9 @@ const createCheckoutSession = async (userId: string, bookingId: string) => {
       bookingId: booking.id,
       userId: userId,
     },
-    success_url: `${config.app_url}/payment/success?session_id={CHECKOUT_SESSION_ID}&booking_id=${booking.id}`,
-    cancel_url: `${config.app_url}/payment/cancel?booking_id=${booking.id}`,
+    success_url: `${config.app_url}/customer-dashboard/payment/success?session_id={CHECKOUT_SESSION_ID}&booking_id=${booking.id}`,
+
+    cancel_url: `${config.app_url}/customer-dashboard/payment/cancel?booking_id=${booking.id}`,
   });
 
   const transactionId = `TXN-${uuidv4().toUpperCase()}`;
@@ -96,9 +97,9 @@ const verifyPayment = async (userId: string, sessionId: string) => {
   });
 
   if (!payment) throw new Error("Payment not found.");
-  if (payment.userId !== userId) 
+  if (payment.userId !== userId)
     throw new Error("You can only verify your own payments.");
-  if (payment.status === "COMPLETED") 
+  if (payment.status === "COMPLETED")
     throw new Error("Payment already completed.");
 
   if (session.payment_status === "paid") {
@@ -147,10 +148,10 @@ const createPaymentIntent = async (userId: string, bookingId: string) => {
 
   if (!booking) throw new Error("Booking not found.");
   if (booking.customerId !== userId)
-     throw new Error("You can only pay for your own bookings.");
+    throw new Error("You can only pay for your own bookings.");
   if (booking.status !== "ACCEPTED")
-     throw new Error(`Booking must be ACCEPTED. Current: ${booking.status}.`);
-  if (booking.payment && booking.payment.status === "COMPLETED") 
+    throw new Error(`Booking must be ACCEPTED. Current: ${booking.status}.`);
+  if (booking.payment && booking.payment.status === "COMPLETED")
     throw new Error("Already paid.");
 
   const paymentIntent = await stripe.paymentIntents.create({
