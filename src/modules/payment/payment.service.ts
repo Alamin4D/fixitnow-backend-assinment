@@ -20,7 +20,12 @@ const createCheckoutSession = async (userId: string, bookingId: string) => {
     throw new Error(`Booking must be ACCEPTED. Current: ${booking.status}.`);
   if (booking.payment && booking.payment.status === "COMPLETED")
     throw new Error("Already paid.");
+  console.log("APP_URL:", config.app_url);
 
+  const successUrl =
+    `${config.app_url}/customer-dashboard/payment/success?session_id={CHECKOUT_SESSION_ID}&booking_id=${booking.id}`;
+
+  console.log("SUCCESS URL:", successUrl);
   // Stripe Checkout Session
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
@@ -42,6 +47,8 @@ const createCheckoutSession = async (userId: string, bookingId: string) => {
       bookingId: booking.id,
       userId: userId,
     },
+
+
     success_url: `${config.app_url}/customer-dashboard/payment/success?session_id={CHECKOUT_SESSION_ID}&booking_id=${booking.id}`,
 
     cancel_url: `${config.app_url}/customer-dashboard/payment/cancel?booking_id=${booking.id}`,
