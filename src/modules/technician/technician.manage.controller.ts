@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { TechnicianManageService } from "./technician.manage.service";
 import { sendResponse } from "../../utils/sendResponse";
 import httpStatus from "http-status";
+import { catchAsync } from "../../utils/catchAsync";
 
 const createProfile = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -14,6 +15,28 @@ const createProfile = async (req: Request, res: Response, next: NextFunction) =>
         });
     } catch (error) { next(error); }
 };
+
+const getProfile = catchAsync(async (req: Request, res: Response) => {
+  const result = await TechnicianManageService.getProfile(req.user!.id);
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Profile retrieved successfully",
+    data: result,
+  });
+});
+
+const getAvailability = catchAsync(async (req: Request, res: Response) => {
+  const result = await TechnicianManageService.getAvailability(req.user!.id);
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Availability retrieved successfully",
+    data: result,
+  });
+});
 
 
 const updateProfile = async (req: Request, res: Response, next: NextFunction) => {
@@ -66,9 +89,11 @@ const updateBookingStatus = async (req: Request, res: Response, next: NextFuncti
 };
 
 export const TechnicianManageController = {
-    createProfile,
-    updateProfile,
-    updateAvailability,
-    getMyBookings,
-    updateBookingStatus
+  createProfile,
+  getProfile,
+  updateProfile,
+  getAvailability,
+  updateAvailability,
+  getMyBookings,
+  updateBookingStatus,
 };

@@ -12,6 +12,38 @@ const createProfile = async (userId: string, payload: { bio?: string; experience
     return profile;
 };
 
+const getProfile = async (userId: string) => {
+  const profile = await prisma.technicianProfile.findUnique({
+    where: {
+      userId,
+    },
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          phone: true,
+        },
+      },
+      services: true,
+      availability: {
+        orderBy: {
+          dayOfWeek: "asc",
+        },
+      },
+    },
+  });
+
+  if (!profile) {
+    throw new Error(
+      "Technician profile not found"
+    );
+  }
+
+  return profile;
+};
+
 const updateProfile = async (userId: string, payload: { bio?: string; experience?: number; location?: string; isAvailable?: boolean }) => {
     const profile = await prisma.technicianProfile.findUnique({ where: { userId } });
     if (!profile) throw new Error("Profile not found. Create one first.");
@@ -107,9 +139,44 @@ const updateBookingStatus = async (userId: string, bookingId: string, status: st
     return updated;
 };
 
+const getAvailability = async (userId: string) => {
+  const technician = await prisma.technicianProfile.findUnique({
+    where: {
+      userId,
+    },
+    select: {
+      id: true,
+    },
+  });
+
+  if (!technician) {
+    throw new Error(
+      "Technician profile not found"
+    );
+  }
+
+  const availability = await prisma.availability.findMany({
+    where: {
+      technicianId: technician.id,
+    },
+    orderBy: [
+      {
+        dayOfWeek: "asc",
+      },
+      {
+        startTime: "asc",
+      },
+    ],
+  });
+
+  return availability;
+};
+
 export const TechnicianManageService = {
     createProfile,
+    getProfile,
     updateProfile,
+    getAvailability,
     updateAvailability,
     getMyBookings,
     updateBookingStatus
