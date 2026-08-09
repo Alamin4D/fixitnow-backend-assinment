@@ -20,7 +20,6 @@ const createCheckoutSession = async (userId: string, bookingId: string) => {
     throw new Error(`Booking must be ACCEPTED. Current: ${booking.status}.`);
   if (booking.payment && booking.payment.status === "COMPLETED")
     throw new Error("Already paid.");
-  console.log("APP_URL:", config.app_url);
 
   // Stripe Checkout Session
   const session = await stripe.checkout.sessions.create({
