@@ -6,6 +6,7 @@ type TMeta = {
     total: number;
 }
 
+
 type TResponseData<T> = {
     success: boolean;
     statusCode: number;

@@ -172,6 +172,214 @@ const getAvailability = async (userId: string) => {
   return availability;
 };
 
+const getDashboard = async (userId: string) => {
+  const technician = await prisma.technicianProfile.findUnique({
+    where: {
+      userId,
+    },
+    select: {
+      id: true,
+    },
+  });
+
+  if (!technician) {
+    throw new Error("Technician profile not found.");
+  }
+
+  const technicianId = technician.id;
+
+  const [
+    totalBookings,
+    pendingRequests,
+    completedJobs,
+    earnings,
+    bookingStatus,
+    bookings,
+    recentBookings,
+  ] = await Promise.all([
+    // Total bookings
+    prisma.booking.count({
+      where: {
+        technicianId,
+      },
+    }),
+
+    // Pending requests
+    prisma.booking.count({
+      where: {
+        technicianId,
+        status: BookingStatus.REQUESTED,
+      },
+    }),
+
+    // Completed jobs
+    prisma.booking.count({
+      where: {
+        technicianId,
+        status: BookingStatus.COMPLETED,
+      },
+    }),
+
+    // Total earnings
+    prisma.booking.aggregate({
+      where: {
+        technicianId,
+        status: BookingStatus.COMPLETED,
+      },
+      _sum: {
+        totalAmount: true,
+      },
+    }),
+
+    // Booking status
+    prisma.booking.groupBy({
+      by: ["status"],
+      where: {
+        technicianId,
+      },
+      _count: {
+        id: true,
+      },
+    }),
+
+    // Monthly analytics
+    prisma.booking.findMany({
+      where: {
+        technicianId,
+      },
+      select: {
+        status: true,
+        totalAmount: true,
+        scheduledDate: true,
+      },
+      orderBy: {
+        scheduledDate: "asc",
+      },
+    }),
+
+    // Recent bookings
+    prisma.booking.findMany({
+      where: {
+        technicianId,
+      },
+      take: 6,
+      orderBy: {
+        createdAt: "desc",
+      },
+      select: {
+        id: true,
+        scheduledDate: true,
+        scheduledTime: true,
+        totalAmount: true,
+        status: true,
+
+        customer: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            phone: true,
+          },
+        },
+
+        service: {
+          select: {
+            id: true,
+            title: true,
+
+            category: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
+          },
+        },
+      },
+    }),
+  ]);
+
+  // -----------------------------
+  // Monthly Analytics
+  // -----------------------------
+
+  const monthlyMap = new Map<
+    string,
+    {
+      key: string;
+      month: string;
+      bookings: number;
+      earnings: number;
+    }
+  >();
+
+  bookings.forEach((booking) => {
+    const date = new Date(booking.scheduledDate);
+
+    const year = date.getFullYear();
+    const monthIndex = date.getMonth();
+
+    const key = `${year}-${String(monthIndex + 1).padStart(
+      2,
+      "0"
+    )}`;
+
+    const month = date.toLocaleString("en-US", {
+      month: "short",
+    });
+
+    if (!monthlyMap.has(key)) {
+      monthlyMap.set(key, {
+        key,
+        month,
+        bookings: 0,
+        earnings: 0,
+      });
+    }
+
+    const current = monthlyMap.get(key)!;
+
+    current.bookings += 1;
+
+    if (booking.status === BookingStatus.COMPLETED) {
+      current.earnings += booking.totalAmount;
+    }
+  });
+
+  const monthlyAnalytics = Array.from(
+    monthlyMap.values()
+  );
+
+  // -----------------------------
+  // Booking Status
+  // -----------------------------
+
+  const statusData = bookingStatus.map((item) => ({
+    status: item.status,
+    count: item._count.id,
+  }));
+
+  // -----------------------------
+  // Final Response
+  // -----------------------------
+
+  return {
+    stats: {
+      totalBookings,
+      pendingRequests,
+      completedJobs,
+      totalEarnings:
+        earnings._sum.totalAmount ?? 0,
+    },
+
+    bookingStatus: statusData,
+
+    monthlyAnalytics,
+
+    recentBookings,
+  };
+};
+
 export const TechnicianManageService = {
     createProfile,
     getProfile,
@@ -179,5 +387,6 @@ export const TechnicianManageService = {
     getAvailability,
     updateAvailability,
     getMyBookings,
-    updateBookingStatus
+    updateBookingStatus,
+    getDashboard
 };

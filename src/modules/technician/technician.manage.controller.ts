@@ -4,6 +4,23 @@ import { sendResponse } from "../../utils/sendResponse";
 import httpStatus from "http-status";
 import { catchAsync } from "../../utils/catchAsync";
 
+
+const getDashboard = catchAsync(
+  async (req: Request, res: Response) => {
+    const result =
+      await TechnicianManageService.getDashboard(
+        req.user!.id
+      );
+
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Dashboard data retrieved successfully",
+      data: result,
+    });
+  }
+);
+
 const createProfile = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const result = await TechnicianManageService.createProfile(req.user!.id, req.body);
@@ -96,4 +113,5 @@ export const TechnicianManageController = {
   updateAvailability,
   getMyBookings,
   updateBookingStatus,
+  getDashboard
 };
